@@ -1,0 +1,7 @@
+<h3>Dashboard</h3><div class="row g-3 mb-4">
+@foreach (var c in (Dictionary<string, object>)ViewBag.Cards) { <div class="col-md-3"><div class="card text-center"><div class="card-body"><h6>@c.Key</h6><h3>@c.Value</h3></div></div></div> }</div>
+<div class="row"><div class="col-md-4"><canvas id="c1"></canvas></div><div class="col-md-4"><canvas id="c2"></canvas></div><div class="col-md-4"><canvas id="c3"></canvas></div></div>
+@section Scripts { <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script><script>
+const mk=(id,t,d,l)=>new Chart(document.getElementById(id),{type:t,data:{labels:d.map(x=>x.k),datasets:[{label:l,data:d.map(x=>x.v)}]}});
+mk('c1','doughnut',@Json.Serialize((object)ViewBag.Lead),'Leads');mk('c2','bar',@Json.Serialize((object)ViewBag.Pipe),'Opportunities');mk('c3','line',@Json.Serialize((object)ViewBag.Monthly),'Monthly Won');
+</script> }

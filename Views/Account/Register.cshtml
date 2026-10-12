@@ -1,0 +1,4 @@
+@model RegisterVm
+<h3>Register</h3><form asp-action="Register" method="post" style="max-width:380px"><div asp-validation-summary="All" class="text-danger"></div>
+@foreach (var f in new[]{"FullName","Email","Password","ConfirmPassword"}) { <div class="mb-2"><label asp-for="@f"></label><input name="@f" type="@(f.Contains("Password")?"password":"text")" class="form-control" data-val="true" data-val-required="@f is required"/><span data-valmsg-for="@f" class="text-danger"></span></div> }
+<button class="btn btn-primary">Register</button></form>

@@ -1,0 +1,5 @@
+@model LoginVm
+<h3>Login</h3><form asp-action="Login" method="post" style="max-width:380px"><div asp-validation-summary="All" class="text-danger"></div>
+<div class="mb-2"><label asp-for="Email"></label><input asp-for="Email" class="form-control"/><span asp-validation-for="Email" class="text-danger"></span></div>
+<div class="mb-2"><label asp-for="Password"></label><input asp-for="Password" class="form-control"/><span asp-validation-for="Password" class="text-danger"></span></div>
+<button class="btn btn-primary">Login</button> <a asp-action="Register">Register</a></form>

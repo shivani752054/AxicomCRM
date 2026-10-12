@@ -1,0 +1,5 @@
+@model Customer
+<h3>Customer</h3><form method="post" style="max-width:500px"><div asp-validation-summary="ModelOnly" class="text-danger"></div>
+@foreach (var p in new[]{"CustomerName","Email","Phone","CompanyName","Address","City","State"}) { <div class="mb-2"><label asp-for="@p"></label><input name="@p" value="@Model.GetType().GetProperty(p)!.GetValue(Model)" class="form-control" data-val="true" @(p is "CustomerName" or "Email" or "Phone" ? "data-val-required=Required" : "")/><span data-valmsg-for="@p" class="text-danger"></span></div> }
+<button class="btn btn-primary">Save</button></form>
+@section Scripts { <script>document.querySelector('[name=Phone]').setAttribute('data-val-regex-pattern','^[6-9]\\d{9}$');document.querySelector('[name=Phone]').setAttribute('data-val-regex','Enter a valid phone number.');document.querySelector('[name=Email]').setAttribute('data-val-email','Enter a valid email address.');$.validator.unobtrusive.parse(document.forms[0]);</script> }

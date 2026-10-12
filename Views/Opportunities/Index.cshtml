@@ -1,0 +1,4 @@
+@model List<Opportunity>
+<h3>Opportunities</h3><form method="get" class="d-flex mb-2"><input name="q" class="form-control me-2" placeholder="Name"/><select name="stage" class="form-select me-2"><option value="">All stages</option><option>Qualification</option><option>Proposal</option><option>Negotiation</option><option>Won</option><option>Lost</option></select><button class="btn btn-secondary">Filter</button><a class="btn btn-primary ms-2" asp-action="Create">New</a></form>
+<table class="table"><tr><th>Name</th><th>Stage</th><th>Amount</th><th>Prob %</th><th>Close</th></tr>
+@foreach (var o in Model) { <tr><td>@o.OpportunityName</td><td>@o.Stage</td><td>@o.Amount.ToString("N0")</td><td>@o.Probability</td><td>@o.ExpectedCloseDate.ToString("dd-MMM-yyyy")</td></tr> }</table>
